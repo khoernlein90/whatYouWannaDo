@@ -1,0 +1,86 @@
+h4 {
+  background: rgba(246, 41, 12, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(246, 41, 12, 1) 0%,
+    rgba(246, 41, 12, 1) 5%,
+    rgba(240, 47, 23, 1) 24%,
+    rgba(248, 80, 50, 1) 51%,
+    rgba(237, 72, 50, 1) 86%,
+    rgba(237, 72, 50, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(246, 41, 12, 1)),
+    color-stop(5%, rgba(246, 41, 12, 1)),
+    color-stop(24%, rgba(240, 47, 23, 1)),
+    color-stop(51%, rgba(248, 80, 50, 1)),
+    color-stop(86%, rgba(237, 72, 50, 1)),
+    color-stop(100%, rgba(237, 72, 50, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(246, 41, 12, 1) 0%,
+    rgba(246, 41, 12, 1) 5%,
+    rgba(240, 47, 23, 1) 24%,
+    rgba(248, 80, 50, 1) 51%,
+    rgba(237, 72, 50, 1) 86%,
+    rgba(237, 72, 50, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(246, 41, 12, 1) 0%,
+    rgba(246, 41, 12, 1) 5%,
+    rgba(240, 47, 23, 1) 24%,
+    rgba(248, 80, 50, 1) 51%,
+    rgba(237, 72, 50, 1) 86%,
+    rgba(237, 72, 50, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(246, 41, 12, 1) 0%,
+    rgba(246, 41, 12, 1) 5%,
+    rgba(240, 47, 23, 1) 24%,
+    rgba(248, 80, 50, 1) 51%,
+    rgba(237, 72, 50, 1) 86%,
+    rgba(237, 72, 50, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(246, 41, 12, 1) 0%,
+    rgba(246, 41, 12, 1) 5%,
+    rgba(240, 47, 23, 1) 24%,
+    rgba(248, 80, 50, 1) 51%,
+    rgba(237, 72, 50, 1) 86%,
+    rgba(237, 72, 50, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6290c', endColorstr='#ed4832', GradientType=0 );
+  color: #fff;
+  font-family: "Bree Serif", serif;
+  font-size: 22px;
+  padding: 25px 20px;
+  border-radius: 7px 0 0 7px;
+}
+p span {
+  font-weight: bold;
+}
+.main-list-div {
+  display: grid;
+  margin: 0px auto 8px auto;
+  grid-template-columns: 4fr 1fr;
+  border: 1px solid #eee;
+  border-radius: 7px;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.main-list-div p {
+  background: #fff;
+  border-radius: 0px 7px 7px 0px;
+  text-align: center;
+  display: grid;
+  align-self: center;
+}
+.main-list-div a {
+  text-decoration: none;
+}

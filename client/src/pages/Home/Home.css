@@ -1,0 +1,42 @@
+h1 {
+  font-family: "Bree Serif", serif;
+  background: #f55742;
+  font-size: 41px;
+  text-align: center;
+  padding: 20px 0;
+  color: white;
+  text-shadow: 3px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  -webkit-box-shadow: inset 0px 0px 35px 1px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: inset 0px 0px 35px 1px rgba(0, 0, 0, 0.59);
+  box-shadow: inset 0px 0px 35px 1px rgba(0, 0, 0, 0.59);
+}
+
+select {
+  appearance: none;
+  text-align-last: center;
+  width: 100%;
+  height: 65px;
+  font-size: 20px;
+}
+
+.saved-button,
+.logout-button {
+  width: 100%;
+  padding: 20px;
+  color: white;
+  font-size: 21px;
+  text-transform: uppercase;
+  border: 1px solid #eee;
+}
+
+.saved-button {
+  background: #f7bc33;
+}
+
+.logout-button {
+  background: #f55742;
+}
+
+.google-image {
+  width: 100%;
+}

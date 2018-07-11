@@ -1,0 +1,60 @@
+.phoneNumber {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 3px;
+}
+.address {
+  font-size: 16px;
+  text-align: center;
+  margin: 4px 0;
+}
+div a {
+  text-decoration: none;
+}
+.address a {
+  display: inherit;
+  text-decoration: none;
+}
+.rating {
+  text-align: center;
+  padding: 15px;
+  background: #eee;
+  font-size: 22px;
+  margin-top: 5px;
+}
+
+.view-image-button {
+  width: 100%;
+  padding: 20px;
+  background: #f55742;
+  color: white;
+  font-size: 21px;
+  text-transform: uppercase;
+  border: 1px solid #eee;
+}
+
+.the-image {
+  width: 100%;
+}
+
+.save-activity {
+  text-align: center;
+  font-size: 20px;
+  background: #eee;
+  padding: 10px;
+}
+
+.saved-button:disabled {
+  background: rgb(252, 159, 39);
+  text-decoration: line-through;
+}
+
+.no-images {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 3px;
+}
+
+.Delete {
+  background: red;
+}
