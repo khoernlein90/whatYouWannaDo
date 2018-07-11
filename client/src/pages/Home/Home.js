@@ -8,6 +8,7 @@ import googleImage from "../../images/btn_google_signin_light_disabled_web@2x.pn
 import List from "../../components/List";
 import MyMapComponent from "../../components/MyMapComponent";
 import Dropdown from "../../components/Dropdown";
+import GoogleButton from "react-google-button";
 
 class App extends Component {
   state = {
@@ -42,9 +43,7 @@ class App extends Component {
   fetchThingsToDo() {
     if (this.state.typeOfActivity) {
       fetch(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${
-          this.state.latitude
-        },${this.state.longitude}&radius=8046&type=${
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${this.state.latitude},${this.state.longitude}&radius=8046&type=${
           this.state.typeOfActivity
         }&key=${keys.keys.googleAPI}`
       )
@@ -60,11 +59,7 @@ class App extends Component {
   }
 
   sendToDetail(id) {
-    fetch(
-      ` https://maps.googleapis.com/maps/api/place/details/json?placeid=${id}&key=${
-        keys.keys.googleAPI
-      }`
-    )
+    fetch(` https://maps.googleapis.com/maps/api/place/details/json?placeid=${id}&key=${keys.keys.googleAPI}`)
       .then(results => {
         return results.json();
       })
@@ -88,20 +83,15 @@ class App extends Component {
           markerData={this.state.placesToGo}
           longitude={this.state.longitude}
           latitude={this.state.latitude}
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${
-            keys.keys.googleAPI
-          }&v=3.exp&libraries=geometry,drawing,places`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${keys.keys.googleAPI}&v=3.exp&libraries=geometry,drawing,places`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `250px`, width: "100%" }} />}
           mapElement={<div style={{ height: `100%`, width: "100%" }} />}
         />
         {this.state.user === "" ? (
           <a href="/auth/google">
-            <img
-              alt="google login button"
-              className="google-image"
-              src={googleImage}
-            />
+            {/* <img alt="google login button" className="google-image" src={googleImage} /> */}
+            <GoogleButton style={{ width: "100%" }} type="light" />
           </a>
         ) : (
           <div>
@@ -115,13 +105,7 @@ class App extends Component {
         )}
 
         <Dropdown
-          activites={[
-            "what_to_do...",
-            "restaurant",
-            "movie_theater",
-            "bar",
-            "amusement_park"
-          ]}
+          activites={["what_to_do...", "restaurant", "movie_theater", "bar", "amusement_park"]}
           fetchActivities={this.fetchThingsToDo}
           handleInputChange={this.handleInputChange}
         />

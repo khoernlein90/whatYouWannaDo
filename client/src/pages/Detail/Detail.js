@@ -56,11 +56,7 @@ class Detail extends Component {
   }
 
   sendToDetail() {
-    fetch(
-      `https://maps.googleapis.com/maps/api/place/details/json?placeid=${
-        this.props.match.params.id
-      }&key=AIzaSyCS5o2kc-8RX4Zr5AoXrNQdAErazOeF_Ug`
-    )
+    fetch(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${this.props.match.params.id}&key=AIzaSyCS5o2kc-8RX4Zr5AoXrNQdAErazOeF_Ug`)
       .then(results => {
         return results.json();
       })
@@ -72,19 +68,10 @@ class Detail extends Component {
     const loginButton =
       this.state.user === "" ? (
         <a href="/auth/google">
-          <img
-            alt="google login button"
-            className="google-image"
-            src={googleImage}
-          />
+          <img alt="google login button" className="google-image" src={googleImage} />
         </a>
       ) : this.state.disabled === "Delete" ? (
-        <button
-          className={`saved-button ${this.state.disabled}`}
-          onClick={() =>
-            this.deleteSavedActivity(this.state.activity.result.place_id)
-          }
-        >
+        <button className={`saved-button ${this.state.disabled}`} onClick={() => this.deleteSavedActivity(this.state.activity.result.place_id)}>
           {this.state.disabled}
         </button>
       ) : (
@@ -111,14 +98,12 @@ class Detail extends Component {
             <Link to="/">
               <h1>{this.state.activity.result.name}</h1>
             </Link>
-            <p className="phoneNumber">
-              {this.state.activity.result.formatted_phone_number}
-            </p>
+            <p className="phoneNumber">{this.state.activity.result.formatted_phone_number}</p>
             <p className="address">
               <a
-                href={`https://maps.google.com/?q=${
-                  this.state.activity.result.geometry.location.lat
-                },${this.state.activity.result.geometry.location.lng}`}
+                href={`https://maps.google.com/?q=${this.state.activity.result.geometry.location.lat},${
+                  this.state.activity.result.geometry.location.lng
+                }`}
               >
                 {this.state.activity.result.formatted_address}
               </a>
@@ -150,11 +135,8 @@ class Detail extends Component {
               </button>
             )} */}
             {loginButton}
-
-            <button
-              className="view-image-button"
-              onClick={() => this.showImagesClick()}
-            >
+            <button style={{ width: "100%", color: "white", background: "black", height: "50px" }}>View Uber Price</button>
+            <button className="view-image-button" onClick={() => this.showImagesClick()}>
               View Images
             </button>
             {this.state.imagesClicked ? (
@@ -177,11 +159,7 @@ class Detail extends Component {
             ) : (
               ""
             )}
-            {this.state.saved ? (
-              <p className="save-activity">Activity Saved!</p>
-            ) : (
-              ""
-            )}
+            {this.state.saved ? <p className="save-activity">Activity Saved!</p> : ""}
           </div>
         ) : (
           <h1>No Data</h1>
