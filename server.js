@@ -2,15 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
-const routes = require("./routes/activities");
 const passport = require("passport");
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+const activityRoutes = require("./routes/activities");
 const authRoutes = require("./routes/authRoutes");
+const uberRoutes = require("./routes/uberRoutes");
 const locator = require("./routes/locator");
 const keys = require("./config/keys");
-const app = express();
 require("./models/User");
 require("./services/passport");
-const PORT = process.env.PORT || 3001;
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,13 +33,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use("/api/uber", uberRoutes);
 app.use(authRoutes);
-app.use(routes);
+app.use(activityRoutes);
 app.use(locator);
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/whatYouWannaDo"
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/whatYouWannaDo");
 
 // Start the API server
 app.listen(PORT, function() {
