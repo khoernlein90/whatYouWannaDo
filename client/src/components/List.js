@@ -7,8 +7,11 @@ const List = props => {
     return (
       <div className="main-list-div" key={place.id}>
         <Link
-          to={`/activity/${place.place_id || place.id}/${props.type ||
-            place.type}`}
+          to={{
+            pathname: `/activity/${place.place_id || place.id}/${props.type ||
+              place.type}`,
+            state: { location: props.location }
+          }}
         >
           <h4
             place-id={place.place_id}

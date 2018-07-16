@@ -10,7 +10,6 @@ router
 router
   .route("/api/activity/:id")
   .get(activityController.findById)
-  .put(activityController.update)
   .delete(activityController.remove);
 
 router.route("/api/activity/:id/:type").get(activityController.findByType);

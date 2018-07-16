@@ -4,7 +4,6 @@ import API from "../../API/API";
 import keys from "../../config/keys";
 import "./Home.css";
 
-import googleImage from "../../images/btn_google_signin_light_disabled_web@2x.png";
 import List from "../../components/List";
 import MyMapComponent from "../../components/MyMapComponent";
 import Dropdown from "../../components/Dropdown";
@@ -14,8 +13,8 @@ class App extends Component {
   state = {
     placesToGo: [],
     user: null,
-    longitude: "",
-    latitude: "",
+    longitude: 0,
+    latitude: 0,
     typeOfActivity: ""
   };
 
@@ -25,14 +24,9 @@ class App extends Component {
         longitude: data.data.location.lng,
         latitude: data.data.location.lat
       });
-      console.log(data);
     });
     this.getCurrentUser();
   }
-
-  saveNewActivity = (name, rating, type, id) => {
-    API.saveData({ name, rating, type, id }).then(data => {});
-  };
 
   getCurrentUser() {
     API.getCurrentUser().then(data => {
@@ -43,7 +37,9 @@ class App extends Component {
   fetchThingsToDo() {
     if (this.state.typeOfActivity) {
       fetch(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${this.state.latitude},${this.state.longitude}&radius=8046&type=${
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${
+          this.state.latitude
+        },${this.state.longitude}&radius=8046&type=${
           this.state.typeOfActivity
         }&key=${keys.keys.googleAPI}`
       )
@@ -56,14 +52,6 @@ class App extends Component {
     } else {
       this.setState({ placesToGo: [] });
     }
-  }
-
-  sendToDetail(id) {
-    fetch(` https://maps.googleapis.com/maps/api/place/details/json?placeid=${id}&key=${keys.keys.googleAPI}`)
-      .then(results => {
-        return results.json();
-      })
-      .then(data => {});
   }
 
   handleInputChange = event => {
@@ -83,14 +71,15 @@ class App extends Component {
           markerData={this.state.placesToGo}
           longitude={this.state.longitude}
           latitude={this.state.latitude}
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${keys.keys.googleAPI}&v=3.exp&libraries=geometry,drawing,places`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${
+            keys.keys.googleAPI
+          }&v=3.exp&libraries=geometry,drawing,places`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `250px`, width: "100%" }} />}
           mapElement={<div style={{ height: `100%`, width: "100%" }} />}
         />
         {this.state.user === "" ? (
           <a href="/auth/google">
-            {/* <img alt="google login button" className="google-image" src={googleImage} /> */}
             <GoogleButton style={{ width: "100%" }} type="light" />
           </a>
         ) : (
@@ -105,15 +94,20 @@ class App extends Component {
         )}
 
         <Dropdown
-          activites={["what_to_do...", "restaurant", "movie_theater", "bar", "amusement_park"]}
+          activites={[
+            "what_to_do...",
+            "restaurant",
+            "movie_theater",
+            "bar",
+            "amusement_park"
+          ]}
           fetchActivities={this.fetchThingsToDo}
           handleInputChange={this.handleInputChange}
         />
         <List
           places={this.state.placesToGo}
+          location={{ lat: this.state.latitude, long: this.state.longitude }}
           type={this.state.typeOfActivity}
-          sendToDetail={this.sendToDetail}
-          saveNewActivity={this.saveNewActivity}
         />
       </div>
     );

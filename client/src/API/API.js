@@ -1,25 +1,38 @@
 import axios from "axios";
 
 export default {
-  getAllSaved: function() {
+  getAllSaved: () => {
     return axios.get("/api/activity");
   },
-  saveData: function(data) {
+  saveData: data => {
     return axios.post("/api/activity", data);
   },
-  viewSavedByType: function(type) {
+  viewSavedByType: type => {
     return axios.get("/api/activity/:id/" + type);
   },
-  viewSavedByID: function(id) {
+  viewSavedByID: id => {
     return axios.get(`/api/activity/${id}`);
   },
-  deleteSavedID: function(id) {
+  deleteSavedID: id => {
     return axios.delete(`/api/activity/${id}`);
   },
-  getCurrentUser: function() {
+  getCurrentUser: () => {
     return axios.get("/api/current_user");
   },
-  getLocation: function() {
+  getLocation: () => {
     return axios.get("/locate");
+  },
+  loginWithUber: () => {
+    return axios.get("/api/uber/login");
+  },
+  viewUberPrices: (startLat, startLong, endLat, endLong) => {
+    return axios.get(
+      `/api/uber/estimate/${startLat}/${startLong}/${endLat}/${endLong}`
+    );
+  },
+  requestUberRide: (startLat, startLong, endLat, endLong, fareId) => {
+    return axios.get(
+      `/api/uber/request/${startLat}/${startLong}/${endLat}/${endLong}/${fareId}`
+    );
   }
 };

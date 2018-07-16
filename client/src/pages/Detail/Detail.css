@@ -58,3 +58,10 @@ div a {
 .Delete {
   background: red;
 }
+
+.uber-button {
+  width: 100%;
+  color: white;
+  background: black;
+  height: 50px;
+}
