@@ -105,7 +105,7 @@ class Detail extends Component {
     fetch(
       `https://maps.googleapis.com/maps/api/place/details/json?placeid=${
         this.props.match.params.id
-      }&key=${keys.keys.googlePlacesKey}`
+      }&key=${keys.keys.googlePlacesKey || process.env.googlePlacesKey}`
     )
       .then(results => {
         return results.json();
@@ -179,26 +179,6 @@ class Detail extends Component {
             <a href="/api/uber/login" onClick={uberButtonHandler}>
               <button className="uber-button">{this.state.uberMessage}</button>
             </a>
-
-            {/* {this.state.uberLoginStatus && !this.state.uberPricesChecked ? (
-              <button className="uber-button" onClick={this.viewUberPrice}>
-                {this.state.uberMessage}
-                {this.state.uberPricesChecked ? <p>CLICK HERE TO ORDER</p> : ""}
-              </button>
-            ) : (
-              ""
-            )}
-            {this.state.uberLoginStatus && this.state.uberPricesChecked ? (
-              <button
-                className="uber-button"
-                // onClick={this.orderUber}
-              >
-                {this.state.uberMessage}
-                {this.state.uberPricesChecked ? <p>CLICK HERE TO ORDER</p> : ""}
-              </button>
-            ) : (
-              ""
-            )} */}
 
             <button
               className="view-image-button"

@@ -41,7 +41,7 @@ class App extends Component {
           this.state.latitude
         },${this.state.longitude}&radius=8046&type=${
           this.state.typeOfActivity
-        }&key=${keys.keys.googleAPI}`
+        }&key=${keys.keys.googleAPI || process.env.googleAPIKey}`
       )
         .then(results => {
           return results.json();
@@ -71,9 +71,10 @@ class App extends Component {
           markerData={this.state.placesToGo}
           longitude={this.state.longitude}
           latitude={this.state.latitude}
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${
-            keys.keys.googleAPI
-          }&v=3.exp&libraries=geometry,drawing,places`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${keys.keys
+            .googleAPI ||
+            process.env
+              .googleAPIKey}&v=3.exp&libraries=geometry,drawing,places`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `250px`, width: "100%" }} />}
           mapElement={<div style={{ height: `100%`, width: "100%" }} />}

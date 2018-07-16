@@ -38,7 +38,9 @@ app.use(authRoutes);
 app.use(activityRoutes);
 app.use(locator);
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/whatYouWannaDo");
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/whatYouWannaDo"
+);
 
 // Start the API server
 app.listen(PORT, function() {
